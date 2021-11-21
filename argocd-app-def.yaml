@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook
+  namespace: argocd           # where your argo is hosted 99% in same namespase no need to change 
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mahisakapal/argocd-demo.git       # can give heml repo url also 
+    targetRevision: HEAD  
+    path: yamls       # path or folder inside have to refer application manifist 
+  destination:
+    server: https://kubernetes.default.svc                  # cluser your if argo cd install same then no need to change or give currect url 
+    namespace: defulat          # where you want to deploy 
